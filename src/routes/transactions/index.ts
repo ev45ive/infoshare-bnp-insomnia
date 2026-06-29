@@ -1,11 +1,14 @@
 import type { FastifyInstance } from "fastify";
-import { z } from "zod/v4";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../../db.ts";
 import {
   TransactionSchema,
   CreateTransactionSchema,
 } from "../../schemas/transaction.ts";
+import {
+  PaginationQuerySchema,
+  paginationEnvelope,
+} from "../../schemas/pagination.ts";
 import {
   handleGetAll,
   setPaginationHeaders,
@@ -22,14 +25,9 @@ export default async function (app: FastifyInstance) {
       schema: {
         tags: ["transactions"],
         summary: "Lista transakcji",
+        querystring: PaginationQuerySchema,
         response: {
-          200: z.object({
-            data: z.array(TransactionSchema),
-            total: z.number(),
-            page: z.number(),
-            limit: z.number(),
-            pages: z.number(),
-          }),
+          200: paginationEnvelope(TransactionSchema),
         },
       },
     },

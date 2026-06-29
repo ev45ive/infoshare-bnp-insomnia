@@ -1,10 +1,13 @@
 import type { FastifyInstance } from "fastify";
-import { z } from "zod/v4";
 import { db } from "../../db.ts";
 import {
   CustomerSchema,
   CreateCustomerSchema,
 } from "../../schemas/customer.ts";
+import {
+  PaginationQuerySchema,
+  paginationEnvelope,
+} from "../../schemas/pagination.ts";
 import {
   handleCreate,
   handleGetAll,
@@ -21,14 +24,9 @@ export default async function (app: FastifyInstance) {
       schema: {
         tags: ["customers"],
         summary: "Lista klientów (koperta + paginacja)",
+        querystring: PaginationQuerySchema,
         response: {
-          200: z.object({
-            data: z.array(CustomerSchema),
-            total: z.number(),
-            page: z.number(),
-            limit: z.number(),
-            pages: z.number(),
-          }),
+          200: paginationEnvelope(CustomerSchema),
         },
       },
     },

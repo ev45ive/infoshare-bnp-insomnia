@@ -1,7 +1,10 @@
 import type { FastifyInstance } from "fastify";
-import { z } from "zod/v4";
 import { db } from "../../db.ts";
 import { AccountSchema, CreateAccountSchema } from "../../schemas/account.ts";
+import {
+  PaginationQuerySchema,
+  paginationEnvelope,
+} from "../../schemas/pagination.ts";
 import {
   handleCreate,
   handleGetAll,
@@ -18,14 +21,9 @@ export default async function (app: FastifyInstance) {
       schema: {
         tags: ["accounts"],
         summary: "Lista kont (koperta + paginacja)",
+        querystring: PaginationQuerySchema,
         response: {
-          200: z.object({
-            data: z.array(AccountSchema),
-            total: z.number(),
-            page: z.number(),
-            limit: z.number(),
-            pages: z.number(),
-          }),
+          200: paginationEnvelope(AccountSchema),
         },
       },
     },
