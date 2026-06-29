@@ -1,0 +1,73 @@
+{
+	"version": "2.1.0",
+	"name": "mockbin",
+	"description": "Test, mock, and track HTTP requests & responses between libraries, sockets and APIs",
+	"author": "Kong (https://www.konghq.com/)",
+	"homepage": "https://mockbin.org/",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Kong/mockbin.git"
+	},
+	"license": "MIT",
+	"main": "lib/index",
+	"bin": "bin/mockbin",
+	"keywords": [
+		"api",
+		"bin",
+		"har",
+		"http",
+		"json",
+		"mock",
+		"mocking",
+		"test",
+		"testing"
+	],
+	"engines": {
+		"node": ">=22"
+	},
+	"files": [
+		"bin",
+		"docs",
+		"src",
+		"lib",
+		"server.js"
+	],
+	"bugs": {
+		"url": "https://github.com/Kong/mockbin/issues"
+	},
+	"scripts": {
+		"start": "node server.js",
+		"dev": "node --watch server.js",
+		"test": "mocha --recursive",
+		"check": "biome check .",
+		"coverage": "npx nyc --report-dir coverage npm test",
+		"clean": "git clean -fdX"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3",
+		"mocha": "^10.2.0",
+		"should": "^13.2.3"
+	},
+	"dependencies": {
+		"@faker-js/faker": "^9.8.0",
+		"@idio/dicer": "1.1.0",
+		"ajv": "^8.18.0",
+		"ajv-formats": "^3.0.1",
+		"compression": "^1.8.1",
+		"content-type": "^1.0.4",
+		"cookie-parser": "^1.4.7",
+		"debug": "^4.3.4",
+		"dotenv": "^16.4.0",
+		"express": "^4.22.0",
+		"har-validator": "^5.1.5",
+		"jstransformer-marked": "^1.4.0",
+		"liquidjs": "^10.27.0",
+		"method-override": "^3.0.0",
+		"morgan": "^1.10.1",
+		"pug": "^3.0.3",
+		"redis": "^4.6.12",
+		"uuid": "^8.3.2",
+		"xmlbuilder": "^15.0.0",
+		"yamljs": "^0.3.0"
+	}
+}

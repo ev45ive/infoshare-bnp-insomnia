@@ -1,0 +1,30 @@
+name: SAST
+
+on:
+  pull_request:
+    branches:
+    - master
+  push:
+    branches:
+    - master
+    tags:
+    - 'v*.*.*'  
+  workflow_dispatch: {}
+
+permissions: {} # Deny all GITHUB_TOKEN permissions by default.
+
+jobs:
+  semgrep:
+    timeout-minutes: ${{ fromJSON(vars.GHA_DEFAULT_TIMEOUT) }}
+    name: Semgrep SAST
+    runs-on: ubuntu-latest
+    permissions:
+      # required for all workflows
+      security-events: write
+      contents: read
+
+    if: (github.actor != 'dependabot[bot]')
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: Kong/public-shared-actions/security-actions/semgrep@a18abf762d6e2444bcbfd20de70451ea1e3bc1b1 # v4.0.1

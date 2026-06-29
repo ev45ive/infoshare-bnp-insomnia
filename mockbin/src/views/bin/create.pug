@@ -1,0 +1,136 @@
+extends ../layout.pug
+
+block content
+  div(data-page="bin/create").container
+    div.panel.panel-default
+      div.panel-heading: h4 Bin Builder
+      div.panel-body
+        div.row
+          div.col-sm-6
+            form(name='status')
+              h4 Status
+
+              div.form-group
+                div.input-group.multi
+                  span.input-group-addon Code
+
+                  input.form-control(type='number', name='status', value='200', placeholder='200', required='')
+                  input.form-control(type='text', name='statusText', value='OK', placeholder='OK', required='')
+
+            form.form-inline(name='headers')
+              h4 Headers
+              datalist#response_headers
+                option(value='Accept')
+                option(value='Accept-Charset')
+                option(value='Accept-Encoding')
+                option(value='Accept-Language')
+                option(value='Accept-Datetime')
+                option(value='Authorization')
+                option(value='Cache-Control')
+                option(value='Connection')
+                option(value='Cookie')
+                option(value='Content-Length')
+                option(value='Content-MD5')
+                option(value='Content-Type')
+                option(value='Date')
+                option(value='Expect')
+                option(value='Forwarded')
+                option(value='From')
+                option(value='Host')
+                option(value='If-Match')
+                option(value='If-Modified-Since')
+                option(value='If-None-Match')
+                option(value='If-Range')
+                option(value='If-Unmodified-Since')
+                option(value='Max-Forwards')
+                option(value='Origin')
+                option(value='Pragma')
+                option(value='Proxy-Authorization')
+                option(value='Range')
+                option(value='Referer')
+                option(value='TE')
+                option(value='User-Agent')
+                option(value='Upgrade')
+                option(value='Via')
+                option(value='Warning')
+                option(value='X-Requested-With')
+                option(value='DNT')
+                option(value='X-Forwarded-For')
+                option(value='X-Forwarded-Host')
+                option(value='X-Forwarded-Proto')
+                option(value='Front-End-Https')
+                option(value='X-Http-Method-Override')
+                option(value='X-ATT-DeviceId')
+                option(value='X-Wap-Profile')
+                option(value='Proxy-Connection')
+                option(value='X-UIDH')
+                option(value='X-Csrf-Token')
+                option(value='X-Request-ID')
+                option(value='X-Correlation-ID')
+              div.form-group.pair
+                div.input-group.multi
+                  span.input-group-addon Header
+
+                  input.form-control(type='text', name='name', placeholder='name', required='', autocomplete='on', list="response_headers")
+                  input.form-control(type='text', name='value', placeholder='value')
+
+                  span.input-group-btn
+                    button(type='button', tabindex='-1').btn.btn-success: i.glyphicon.glyphicon-plus
+                    button(type='button', tabindex='-1').btn.btn-danger: i.glyphicon.glyphicon-remove
+
+            form.form-inline(name='cookies')
+              h4 Cookies
+
+              div.form-group.pair
+                div.input-group.multi
+                  span.input-group-addon Cookie
+
+                  input.form-control(type='text', name='name', placeholder='name', required='')
+                  input.form-control(type='text', name='value', placeholder='value')
+
+                  span.input-group-btn
+                    button(type='button', tabindex='-1').btn.btn-success: i.glyphicon.glyphicon-plus
+                    button(type='button', tabindex='-1').btn.btn-danger: i.glyphicon.glyphicon-remove
+
+            form.form-horizontal(name='content')
+              h4 Body
+
+              div.form-group
+                div.col-sm-12: textarea(rows=5, name='text', value='', placeholder='body content').form-control
+
+              div.form-group
+                div.col-sm-12
+                  div.input-group
+                    span.input-group-addon mimeType
+                    input.form-control(type='text', name='mimeType', value='text/plain', placeholder='multipart/form-data', required='')
+
+          div.col-sm-6
+            h4 Preview
+
+            div#preview
+              pre: code
+
+      div.panel-footer
+        div.row
+          div.col-sm-4
+            div.input-group
+              span.input-group-addon Example
+              select(name='example').form-control
+                option(value='') Select ...
+                option(value='json') JSON
+                option(value='xml') XML
+                option(value='jsonp') JSONP
+                option(value='text') Plain text
+
+          div.col-sm-6
+            div.input-group
+              span.input-group-addon Load File
+              input(type='file').form-control
+
+          div.col-sm-2
+            form(method="POST", action="/bin/create")
+              input(type='hidden', name='response', value='')
+              button(type='submit').btn.btn-primary.btn-block Create Bin
+
+block scripts
+  script(type='text/javascript', src='/static/bin/create.js')
