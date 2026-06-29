@@ -1,0 +1,5 @@
+[
+  { "id": "44444444-4444-4444-8444-444444444401", "name": "InsoBank Warszawa Centrum", "city": "Warszawa", "address": "ul. Marszałkowska 10", "phone": "+48 22 100 10 10" },
+  { "id": "44444444-4444-4444-8444-444444444402", "name": "InsoBank Kraków Rynek", "city": "Kraków", "address": "Rynek Główny 5", "phone": "+48 12 200 20 20" },
+  { "id": "44444444-4444-4444-8444-444444444403", "name": "InsoBank Gdańsk Główny", "city": "Gdańsk", "address": "ul. Długa 1", "phone": "+48 58 300 30 30" }
+]

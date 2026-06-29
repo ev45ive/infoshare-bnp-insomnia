@@ -1,0 +1,5 @@
+[
+  { "id": "66666666-6666-4666-8666-666666666601", "name": "Konto Osobiste", "type": "account", "monthlyFee": 0.0, "currency": "PLN" },
+  { "id": "66666666-6666-4666-8666-666666666602", "name": "Karta Kredytowa Gold", "type": "card", "monthlyFee": 19.99, "currency": "PLN" },
+  { "id": "66666666-6666-4666-8666-666666666603", "name": "Lokata 12M", "type": "deposit", "monthlyFee": 0.0, "currency": "PLN" }
+]

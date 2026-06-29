@@ -1,0 +1,247 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_source": "insobank-demo:full",
+  "resources": [
+    {
+      "_id": "wrk_insobank",
+      "_type": "workspace",
+      "name": "InsoBank — pełna kolekcja",
+      "description": "health + CRUD customers/accounts/transactions + auth (JWT/Basic/OAuth) + admin + statyczne + wersjonowanie + debug.",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_base",
+      "_type": "environment",
+      "parentId": "wrk_insobank",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:3000",
+        "customer_id": "11111111-1111-4111-8111-111111111101",
+        "account_id": "33333333-3333-4333-8333-333333333301",
+        "new_customer_id": "",
+        "new_account_id": "",
+        "token": ""
+      }
+    },
+
+    { "_id": "fld_health", "_type": "request_group", "parentId": "wrk_insobank", "name": "Health", "metaSortKey": -200 },
+    { "_id": "fld_customers", "_type": "request_group", "parentId": "wrk_insobank", "name": "Customers", "metaSortKey": -190 },
+    { "_id": "fld_auth", "_type": "request_group", "parentId": "wrk_insobank", "name": "Auth", "metaSortKey": -180 },
+    { "_id": "fld_accounts", "_type": "request_group", "parentId": "wrk_insobank", "name": "Accounts", "metaSortKey": -170 },
+    { "_id": "fld_tx", "_type": "request_group", "parentId": "wrk_insobank", "name": "Transactions", "metaSortKey": -160 },
+    { "_id": "fld_secure", "_type": "request_group", "parentId": "wrk_insobank", "name": "Protected/Admin", "metaSortKey": -150 },
+    { "_id": "fld_static", "_type": "request_group", "parentId": "wrk_insobank", "name": "Static", "metaSortKey": -140 },
+    { "_id": "fld_ver", "_type": "request_group", "parentId": "wrk_insobank", "name": "Versioning", "metaSortKey": -130 },
+    { "_id": "fld_debug", "_type": "request_group", "parentId": "wrk_insobank", "name": "Debug", "metaSortKey": -120 },
+
+    {
+      "_id": "req_health", "_type": "request", "parentId": "fld_health",
+      "name": "GET /health", "method": "GET", "url": "{{ _.base_url }}/health", "metaSortKey": -200,
+      "afterResponseScript": "const j = insomnia.response.json();\ninsomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));\ninsomnia.test('status ok', () => insomnia.expect(j.status).to.equal('ok'));"
+    },
+    {
+      "_id": "req_health_detailed", "_type": "request", "parentId": "fld_health",
+      "name": "GET /health/detailed", "method": "GET", "url": "{{ _.base_url }}/health/detailed", "metaSortKey": -199,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+
+    {
+      "_id": "req_list", "_type": "request", "parentId": "fld_customers",
+      "name": "GET /customers (lista + paginacja)", "method": "GET", "url": "{{ _.base_url }}/customers", "metaSortKey": -190,
+      "parameters": [
+        { "name": "_page", "value": "1" }, { "name": "_limit", "value": "5" },
+        { "name": "_sort", "value": "lastName" }, { "name": "_order", "value": "asc" }
+      ],
+      "afterResponseScript": "const j = insomnia.response.json();\ninsomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));\ninsomnia.test('koperta data[]', () => insomnia.expect(j.data).to.be.an('array'));\ninsomnia.test('limit 5', () => insomnia.expect(j.limit).to.equal(5));"
+    },
+    {
+      "_id": "req_create", "_type": "request", "parentId": "fld_customers",
+      "name": "POST /customers (utwórz)", "method": "POST", "url": "{{ _.base_url }}/customers", "metaSortKey": -180,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": { "mimeType": "application/json", "text": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Insomnia\",\n  \"email\": \"test.insomnia@example.com\",\n  \"pesel\": \"99010112345\",\n  \"status\": \"active\"\n}" },
+      "afterResponseScript": "const j = insomnia.response.json();\ninsomnia.test('201 Created', () => insomnia.expect(insomnia.response.code).to.equal(201));\ninsomnia.test('ma id', () => insomnia.expect(j.id).to.be.a('string'));\ninsomnia.environment.set('new_customer_id', j.id);"
+    },
+    {
+      "_id": "req_get", "_type": "request", "parentId": "fld_customers",
+      "name": "GET /customers/:id (utworzony)", "method": "GET", "url": "{{ _.base_url }}/customers/{{ _.new_customer_id }}", "metaSortKey": -170,
+      "afterResponseScript": "const j = insomnia.response.json();\ninsomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));\ninsomnia.test('email zgodny', () => insomnia.expect(j.email).to.equal('test.insomnia@example.com'));"
+    },
+    {
+      "_id": "req_put", "_type": "request", "parentId": "fld_customers",
+      "name": "PUT /customers/:id (zamień)", "method": "PUT", "url": "{{ _.base_url }}/customers/{{ _.new_customer_id }}", "metaSortKey": -160,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": { "mimeType": "application/json", "text": "{\n  \"firstName\": \"Test2\",\n  \"lastName\": \"Replace\",\n  \"email\": \"test.replace@example.com\",\n  \"pesel\": \"99010112345\",\n  \"status\": \"inactive\"\n}" },
+      "afterResponseScript": "const j = insomnia.response.json();\ninsomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));\ninsomnia.test('status inactive', () => insomnia.expect(j.status).to.equal('inactive'));"
+    },
+    {
+      "_id": "req_patch", "_type": "request", "parentId": "fld_customers",
+      "name": "PATCH /customers/:id (aktualizuj)", "method": "PATCH", "url": "{{ _.base_url }}/customers/{{ _.new_customer_id }}", "metaSortKey": -150,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": { "mimeType": "application/json", "text": "{ \"firstName\": \"Patched\" }" },
+      "afterResponseScript": "const j = insomnia.response.json();\ninsomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));\ninsomnia.test('firstName Patched', () => insomnia.expect(j.firstName).to.equal('Patched'));"
+    },
+    {
+      "_id": "req_delete", "_type": "request", "parentId": "fld_customers",
+      "name": "DELETE /customers/:id", "method": "DELETE", "url": "{{ _.base_url }}/customers/{{ _.new_customer_id }}", "metaSortKey": -140,
+      "afterResponseScript": "insomnia.test('204 No Content', () => insomnia.expect(insomnia.response.code).to.equal(204));"
+    },
+    {
+      "_id": "req_404", "_type": "request", "parentId": "fld_customers",
+      "name": "GET /customers/:id (404 po usunięciu)", "method": "GET", "url": "{{ _.base_url }}/customers/{{ _.new_customer_id }}", "metaSortKey": -130,
+      "afterResponseScript": "insomnia.test('404 Not Found', () => insomnia.expect(insomnia.response.code).to.equal(404));"
+    },
+
+    {
+      "_id": "req_login", "_type": "request", "parentId": "fld_auth",
+      "name": "POST /auth/login", "method": "POST", "url": "{{ _.base_url }}/auth/login", "metaSortKey": -180,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": { "mimeType": "application/json", "text": "{ \"username\": \"anna\", \"password\": \"secret123\" }" },
+      "afterResponseScript": "const j = insomnia.response.json();\ninsomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));\ninsomnia.test('ma access_token', () => insomnia.expect(j.access_token).to.be.a('string'));\ninsomnia.environment.set('token', j.access_token);"
+    },
+    {
+      "_id": "req_refresh", "_type": "request", "parentId": "fld_auth",
+      "name": "POST /auth/refresh", "method": "POST", "url": "{{ _.base_url }}/auth/refresh", "metaSortKey": -170,
+      "authentication": { "type": "bearer", "token": "{{ _.token }}" },
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_logout", "_type": "request", "parentId": "fld_auth",
+      "name": "POST /auth/logout", "method": "POST", "url": "{{ _.base_url }}/auth/logout", "metaSortKey": -160,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_oauth", "_type": "request", "parentId": "fld_auth",
+      "name": "POST /auth/oauth/token", "method": "POST", "url": "{{ _.base_url }}/auth/oauth/token", "metaSortKey": -150,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": { "mimeType": "application/json", "text": "{ \"grant_type\": \"client_credentials\", \"client_id\": \"demo\" }" },
+      "afterResponseScript": "const j = insomnia.response.json();\ninsomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));\ninsomnia.test('expires_in', () => insomnia.expect(j.expires_in).to.equal(3600));"
+    },
+
+    {
+      "_id": "req_acc_list", "_type": "request", "parentId": "fld_accounts",
+      "name": "GET /accounts", "method": "GET", "url": "{{ _.base_url }}/accounts", "metaSortKey": -190,
+      "afterResponseScript": "const j = insomnia.response.json();\ninsomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));\ninsomnia.test('koperta', () => insomnia.expect(j.data).to.be.an('array'));"
+    },
+    {
+      "_id": "req_acc_create", "_type": "request", "parentId": "fld_accounts",
+      "name": "POST /accounts", "method": "POST", "url": "{{ _.base_url }}/accounts", "metaSortKey": -180,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": { "mimeType": "application/json", "text": "{\n  \"customerId\": \"{{ _.customer_id }}\",\n  \"iban\": \"PL61109010140000071219800000\",\n  \"currency\": \"PLN\",\n  \"balance\": 100\n}" },
+      "afterResponseScript": "const j = insomnia.response.json();\ninsomnia.test('201 Created', () => insomnia.expect(insomnia.response.code).to.equal(201));\ninsomnia.environment.set('new_account_id', j.id);"
+    },
+    {
+      "_id": "req_acc_balance", "_type": "request", "parentId": "fld_accounts",
+      "name": "GET /accounts/:id/balance", "method": "GET", "url": "{{ _.base_url }}/accounts/{{ _.account_id }}/balance", "metaSortKey": -170,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_acc_freeze", "_type": "request", "parentId": "fld_accounts",
+      "name": "POST /accounts/:id/freeze", "method": "POST", "url": "{{ _.base_url }}/accounts/{{ _.account_id }}/freeze", "metaSortKey": -160,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_acc_unfreeze", "_type": "request", "parentId": "fld_accounts",
+      "name": "POST /accounts/:id/unfreeze", "method": "POST", "url": "{{ _.base_url }}/accounts/{{ _.account_id }}/unfreeze", "metaSortKey": -150,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+
+    {
+      "_id": "req_tx_list", "_type": "request", "parentId": "fld_tx",
+      "name": "GET /transactions", "method": "GET", "url": "{{ _.base_url }}/transactions", "metaSortKey": -190,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_tx_deposit", "_type": "request", "parentId": "fld_tx",
+      "name": "POST /transactions (deposit)", "method": "POST", "url": "{{ _.base_url }}/transactions", "metaSortKey": -180,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": { "mimeType": "application/json", "text": "{ \"accountId\": \"{{ _.account_id }}\", \"type\": \"deposit\", \"amount\": 50, \"currency\": \"PLN\" }" },
+      "afterResponseScript": "insomnia.test('201 Created', () => insomnia.expect(insomnia.response.code).to.equal(201));"
+    },
+    {
+      "_id": "req_tx_422", "_type": "request", "parentId": "fld_tx",
+      "name": "POST /transactions (422 brak środków)", "method": "POST", "url": "{{ _.base_url }}/transactions", "metaSortKey": -170,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": { "mimeType": "application/json", "text": "{ \"accountId\": \"{{ _.account_id }}\", \"type\": \"withdrawal\", \"amount\": 999999, \"currency\": \"PLN\" }" },
+      "afterResponseScript": "insomnia.test('422', () => insomnia.expect(insomnia.response.code).to.equal(422));"
+    },
+
+    {
+      "_id": "req_me", "_type": "request", "parentId": "fld_secure",
+      "name": "GET /me", "method": "GET", "url": "{{ _.base_url }}/me", "metaSortKey": -190,
+      "authentication": { "type": "bearer", "token": "{{ _.token }}" },
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_report", "_type": "request", "parentId": "fld_secure",
+      "name": "GET /protected/report (admin)", "method": "GET", "url": "{{ _.base_url }}/protected/report", "metaSortKey": -180,
+      "authentication": { "type": "bearer", "token": "{{ _.token }}" },
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_basic", "_type": "request", "parentId": "fld_secure",
+      "name": "GET /protected/basic", "method": "GET", "url": "{{ _.base_url }}/protected/basic", "metaSortKey": -170,
+      "authentication": { "type": "basic", "username": "anna", "password": "secret123" },
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_reset", "_type": "request", "parentId": "fld_secure",
+      "name": "POST /admin/reset (admin)", "method": "POST", "url": "{{ _.base_url }}/admin/reset", "metaSortKey": -160,
+      "authentication": { "type": "bearer", "token": "{{ _.token }}" },
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+
+    {
+      "_id": "req_branches", "_type": "request", "parentId": "fld_static",
+      "name": "GET /branches", "method": "GET", "url": "{{ _.base_url }}/branches", "metaSortKey": -190,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_rates", "_type": "request", "parentId": "fld_static",
+      "name": "GET /exchange-rates", "method": "GET", "url": "{{ _.base_url }}/exchange-rates", "metaSortKey": -180,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_products", "_type": "request", "parentId": "fld_static",
+      "name": "GET /products", "method": "GET", "url": "{{ _.base_url }}/products", "metaSortKey": -170,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+
+    {
+      "_id": "req_v1", "_type": "request", "parentId": "fld_ver",
+      "name": "GET /v1/customers (deprecated)", "method": "GET", "url": "{{ _.base_url }}/v1/customers", "metaSortKey": -190,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+    {
+      "_id": "req_v2", "_type": "request", "parentId": "fld_ver",
+      "name": "GET /v2/customers", "method": "GET", "url": "{{ _.base_url }}/v2/customers", "metaSortKey": -180,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+
+    {
+      "_id": "req_crash", "_type": "request", "parentId": "fld_debug",
+      "name": "GET /debug/crash (500)", "method": "GET", "url": "{{ _.base_url }}/debug/crash", "metaSortKey": -190,
+      "afterResponseScript": "insomnia.test('500', () => insomnia.expect(insomnia.response.code).to.equal(500));"
+    },
+    {
+      "_id": "req_echo", "_type": "request", "parentId": "fld_debug",
+      "name": "GET /debug/echo", "method": "GET", "url": "{{ _.base_url }}/debug/echo", "metaSortKey": -180,
+      "afterResponseScript": "insomnia.test('200 OK', () => insomnia.expect(insomnia.response.code).to.equal(200));"
+    },
+
+    { "_id": "tst_suite_etap1", "_type": "unit_test_suite", "parentId": "wrk_insobank", "name": "Etap 1 — smoke", "metaSortKey": -100 },
+    { "_id": "ut_health", "_type": "unit_test", "parentId": "tst_suite_etap1", "name": "health → 200", "requestId": "req_health", "code": "const r = await insomnia.send(); expect(r.status).to.equal(200);" },
+    { "_id": "ut_list", "_type": "unit_test", "parentId": "tst_suite_etap1", "name": "list → 200 + koperta", "requestId": "req_list", "code": "const r = await insomnia.send(); expect(r.status).to.equal(200); const b = JSON.parse(r.data); expect(b.data).to.be.an('array');" },
+    { "_id": "ut_create", "_type": "unit_test", "parentId": "tst_suite_etap1", "name": "create → 201", "requestId": "req_create", "code": "const r = await insomnia.send(); expect(r.status).to.equal(201);" },
+
+    { "_id": "tst_suite_auth", "_type": "unit_test_suite", "parentId": "wrk_insobank", "name": "Auth + Secure", "metaSortKey": -90 },
+    { "_id": "ut_login", "_type": "unit_test", "parentId": "tst_suite_auth", "name": "login → token", "requestId": "req_login", "code": "const r = await insomnia.send(); expect(r.status).to.equal(200); const b = JSON.parse(r.data); expect(b.access_token).to.be.a('string');" },
+    { "_id": "ut_me", "_type": "unit_test", "parentId": "tst_suite_auth", "name": "me → 200", "requestId": "req_me", "code": "const r = await insomnia.send(); expect(r.status).to.equal(200);" },
+    { "_id": "ut_report", "_type": "unit_test", "parentId": "tst_suite_auth", "name": "report → 200", "requestId": "req_report", "code": "const r = await insomnia.send(); expect(r.status).to.equal(200);" },
+
+    { "_id": "tst_suite_static", "_type": "unit_test_suite", "parentId": "wrk_insobank", "name": "Static + Debug", "metaSortKey": -80 },
+    { "_id": "ut_branches", "_type": "unit_test", "parentId": "tst_suite_static", "name": "branches → 200", "requestId": "req_branches", "code": "const r = await insomnia.send(); expect(r.status).to.equal(200);" },
+    { "_id": "ut_crash", "_type": "unit_test", "parentId": "tst_suite_static", "name": "crash → 500", "requestId": "req_crash", "code": "const r = await insomnia.send(); expect(r.status).to.equal(500);" },
+    { "_id": "ut_echo", "_type": "unit_test", "parentId": "tst_suite_static", "name": "echo → 200", "requestId": "req_echo", "code": "const r = await insomnia.send(); expect(r.status).to.equal(200);" }
+  ]
+}
