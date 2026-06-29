@@ -120,8 +120,9 @@ export async function handleReplace<T extends { id: string }>(
 ): Promise<T> {
   const { idParam = "id" } = options;
   const id = (req.params as Record<string, string>)[idParam];
-  if (!collection.has(id)) throw reply.notFound(`Resource '${id}' not found`);
-  const item = { ...(req.body as Partial<T>), id } as T;
+  const existing = collection.get(id);
+  if (!existing) throw reply.notFound(`Resource '${id}' not found`);
+  const item = { ...(req.body as Partial<T>), id, createdAt: (existing as Record<string, unknown>).createdAt } as T;
   collection.set(id, item);
   return item;
 }
