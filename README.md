@@ -1,1 +1,0 @@
-# infoshare-bnp-insomnia
