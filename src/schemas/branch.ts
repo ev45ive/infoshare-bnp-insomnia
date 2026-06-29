@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 
 export const BranchSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   name: z.string().meta({ example: "InsoBank Warszawa Centrum" }),
   city: z.string().meta({ example: "Warszawa" }),
   address: z.string(),

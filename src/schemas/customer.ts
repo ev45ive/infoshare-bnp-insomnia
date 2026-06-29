@@ -8,7 +8,7 @@ export const AddressSchema = z.object({
 }).meta({ id: "Address" });
 
 export const CustomerSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   firstName: z.string().min(1).meta({ example: "Anna" }),
   lastName: z.string().min(1).meta({ example: "Kowalska" }),
   email: z.string().email().meta({ example: "anna.kowalska@example.com" }),
@@ -22,5 +22,6 @@ export const CreateCustomerSchema = CustomerSchema.omit({
   id: true,
   createdAt: true,
 });
+
 
 export type Customer = z.infer<typeof CustomerSchema>;

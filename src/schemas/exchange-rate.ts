@@ -2,7 +2,7 @@ import { z } from "zod/v4";
 
 export const ExchangeRateSchema = z
   .object({
-    id: z.string().uuid(),
+    id: z.uuid(),
     base: z.enum(["PLN", "EUR", "USD"]),
     quote: z.enum(["PLN", "EUR", "USD"]),
     rate: z.number().positive().meta({ example: 4.32 }),

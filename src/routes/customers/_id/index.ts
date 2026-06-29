@@ -13,7 +13,7 @@ import {
 } from "../../../rest-helpers.ts";
 
 const customers = db.customers.map;
-const params = z.object({ id: z.string().uuid() });
+const params = z.object({ id: z.uuid() });
 
 export default async function (app: FastifyInstance) {
   app.get(

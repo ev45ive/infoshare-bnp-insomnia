@@ -1,8 +1,8 @@
 import { z } from "zod/v4";
 
 export const TransactionSchema = z.object({
-  id: z.string().uuid(),
-  accountId: z.string().uuid(),
+  id: z.uuid(),
+  accountId: z.uuid(),
   type: z.enum(["deposit", "withdrawal"]).meta({ example: "deposit" }),
   amount: z.number().positive().meta({ example: 100.0 }),
   currency: z.enum(["PLN", "EUR", "USD"]).default("PLN"),
