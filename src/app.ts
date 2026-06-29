@@ -2,6 +2,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import Fastify from "fastify";
 import autoload from "@fastify/autoload";
+import fastifyStatic from "@fastify/static";
 import {
   fastifyZodOpenApiPlugin,
   serializerCompiler,
@@ -16,6 +17,13 @@ export async function build() {
   app.setValidatorCompiler(validatorCompiler);
   app.setSerializerCompiler(serializerCompiler);
   await app.register(fastifyZodOpenApiPlugin);
+
+  await app.register(fastifyStatic, {
+    root: join(__dirname, "../public"),
+    prefix: "/ui/",
+  });
+
+  app.get("/", (_, reply) => reply.redirect("/ui/"));
 
   // 1. Global plugins — decorators visible in routes/
   await app.register(autoload, {
