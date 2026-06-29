@@ -5,7 +5,7 @@ export const AddressSchema = z.object({
   city: z.string(),
   postalCode: z.string(),
   country: z.string().default("PL"),
-});
+}).meta({ id: "Address" });
 
 export const CustomerSchema = z.object({
   id: z.string().uuid(),
@@ -16,7 +16,7 @@ export const CustomerSchema = z.object({
   status: z.enum(["active", "inactive"]).default("active"),
   address: AddressSchema.optional(),
   createdAt: z.string().datetime(),
-});
+}).meta({ id: "Customer" });
 
 export const CreateCustomerSchema = CustomerSchema.omit({
   id: true,

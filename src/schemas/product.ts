@@ -6,6 +6,6 @@ export const ProductSchema = z.object({
   type: z.enum(["account", "card", "deposit"]),
   monthlyFee: z.number().nonnegative().meta({ example: 0 }),
   currency: z.enum(["PLN", "EUR", "USD"]).default("PLN"),
-});
+}).meta({ id: "Product" });
 
 export type Product = z.infer<typeof ProductSchema>;

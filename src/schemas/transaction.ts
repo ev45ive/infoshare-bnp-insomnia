@@ -8,7 +8,7 @@ export const TransactionSchema = z.object({
   currency: z.enum(["PLN", "EUR", "USD"]).default("PLN"),
   status: z.enum(["completed", "cancelled"]).default("completed"),
   createdAt: z.string().datetime(),
-});
+}).meta({ id: "Transaction" });
 
 export const CreateTransactionSchema = TransactionSchema.pick({
   accountId: true,

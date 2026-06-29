@@ -6,6 +6,6 @@ export const BranchSchema = z.object({
   city: z.string().meta({ example: "Warszawa" }),
   address: z.string(),
   phone: z.string(),
-});
+}).meta({ id: "Branch" });
 
 export type Branch = z.infer<typeof BranchSchema>;

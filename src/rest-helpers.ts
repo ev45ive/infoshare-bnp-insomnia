@@ -50,7 +50,9 @@ export async function handleGetAll<T extends { id: string }>(
   const sort = query._sort;
   const order = query._order === "desc" ? "desc" : "asc";
 
-  const filters: Record<string, unknown> = { ...nestedFilters(params, options) };
+  const filters: Record<string, unknown> = {
+    ...nestedFilters(params, options),
+  };
   for (const [key, value] of Object.entries(query)) {
     if (!RESERVED.has(key)) filters[key] = value;
   }
@@ -95,7 +97,9 @@ export async function handleGetOne<T extends { id: string }>(
   return item;
 }
 
-export async function handleCreate<T extends { id: string }>(
+export async function handleCreate<
+  T extends { id: string; createdAt?: string },
+>(
   req: FastifyRequest,
   _reply: FastifyReply,
   collection: Map<string, T>,

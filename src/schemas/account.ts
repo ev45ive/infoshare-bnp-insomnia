@@ -8,7 +8,7 @@ export const AccountSchema = z.object({
   balance: z.number().nonnegative().meta({ example: 1500.5 }),
   status: z.enum(["active", "frozen"]).default("active"),
   createdAt: z.string().datetime(),
-});
+}).meta({ id: "Account" });
 
 export const CreateAccountSchema = AccountSchema.omit({
   id: true,
