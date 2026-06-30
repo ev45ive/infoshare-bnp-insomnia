@@ -23,6 +23,9 @@ https://en.wikipedia.org/wiki/YAML
 # Open API Spec (OAS 3.2)
 https://spec.openapis.org/oas/latest.html#objects-and-fields
 
+# JSON-Schema - Validate JSON
+https://json-schema.org/learn/getting-started-step-by-step
+
 # JSON PATH (plus)
 https://jsonpath.com/ 
 https://www.npmjs.com/package/jsonpath-plus
