@@ -23,7 +23,7 @@ export const PaginationQuerySchema = z.object({
     .enum(["asc", "desc"])
     .optional()
     .meta({ description: "Kierunek sortowania", example: "asc" }),
-});
+}).passthrough();
 
 /**
  * Fabryka koperty paginacji — items odwołuje się przez $ref
