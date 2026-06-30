@@ -10,6 +10,9 @@ docker ps
 
 https://github.com/ev45ive/infoshare-bnp-insomnia.git 
 
+> Po szkoleniu - fork
+https://github.com/ev45ive/infoshare-bnp-insomnia.git/fork 
+
 
 # YAML
 https://en.wikipedia.org/wiki/YAML
