@@ -272,6 +272,283 @@ collection:
     pathParameters:
       - name: id
         value: 11111111-1111-4111-8111-111111111111
+  - name: customers
+    meta:
+      id: fld_f7474430f35541149dc845133317b776
+      created: 1782815301029
+      modified: 1782815301029
+      sortKey: -1000000000
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/customers/:id/"
+        name: Aktualizuj klienta
+        meta:
+          id: req_0d1b4d8e0dfc47c5a69eb4ba9ff8a955
+          created: 1782815301029
+          modified: 1782815301029
+          isPrivate: false
+          description: ""
+          sortKey: -1782814900367
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "firstName": "Anna",
+              "lastName": "Kowalska",
+              "email": "anna.kowalska@example.com",
+              "pesel": "90010112345",
+              "status": "active",
+              "address": {
+                "street": "string",
+                "city": "string",
+                "postalCode": "string",
+                "country": "PL"
+              }
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/customers/"
+        name: Utwórz klienta
+        meta:
+          id: req_92d2f81950014bd2b05374af00388ccf
+          created: 1782815301029
+          modified: 1782815301029
+          isPrivate: false
+          description: ""
+          sortKey: -1782814900365
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "firstName": "Anna",
+              "lastName": "Kowalska",
+              "email": "anna.kowalska@example.com",
+              "pesel": "90010112345",
+              "status": "active",
+              "address": {
+                "street": "string",
+                "city": "string",
+                "postalCode": "string",
+                "country": "PL"
+              }
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/customers/:id/"
+        name: Klient po ID
+        meta:
+          id: req_9ad6b357857544a3a6be4e2d8a9729c0
+          created: 1782815301029
+          modified: 1782815301029
+          isPrivate: false
+          description: ""
+          sortKey: -1782814900365
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/customers/:id/"
+        name: Zamień klienta
+        meta:
+          id: req_b3f046abdaa442b4948e0732f008bbc0
+          created: 1782815301029
+          modified: 1782815301029
+          isPrivate: false
+          description: ""
+          sortKey: -1782814900366
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "firstName": "Anna",
+              "lastName": "Kowalska",
+              "email": "anna.kowalska@example.com",
+              "pesel": "90010112345",
+              "status": "active",
+              "address": {
+                "street": "string",
+                "city": "string",
+                "postalCode": "string",
+                "country": "PL"
+              }
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/customers/"
+        name: Lista klientów (koperta + paginacja)
+        meta:
+          id: req_b4c46cf5c5064fd187b930d8d3b8a61e
+          created: 1782815301029
+          modified: 1782815301029
+          isPrivate: false
+          description: ""
+          sortKey: -1782814900364
+        method: GET
+        parameters:
+          - name: _page
+            value: "1"
+            disabled: true
+          - name: _limit
+            value: "10"
+            disabled: true
+          - name: _sort
+            value: lastName
+            disabled: true
+          - name: _order
+            value: asc
+            disabled: true
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/customers/:id/"
+        name: Usuń klienta
+        meta:
+          id: req_bc8027071c0349429aab9487ded6bc4e
+          created: 1782815301029
+          modified: 1782815301029
+          isPrivate: false
+          description: ""
+          sortKey: -1782814900367
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: accounts
+    meta:
+      id: fld_d90d9ddc0bda4bff9b60c48d96a58656
+      created: 1782815337375
+      modified: 1782815337375
+      sortKey: -1000000000
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/customers/:id/accounts/"
+        name: /customers/{id}/accounts/
+        meta:
+          id: req_2b5e6f5c08e64b858ba33072d95b7674
+          created: 1782815337375
+          modified: 1782815337375
+          isPrivate: false
+          description: ""
+          sortKey: -1782814900368
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/accounts/"
+        name: Lista kont (koperta + paginacja)
+        meta:
+          id: req_331ecb1e0c204213b59323a0a023e2ab
+          created: 1782815337375
+          modified: 1782815337375
+          isPrivate: false
+          description: ""
+          sortKey: -1782814900355
+        method: GET
+        parameters:
+          - name: _page
+            value: "1"
+            disabled: true
+          - name: _limit
+            value: "10"
+            disabled: true
+          - name: _sort
+            value: lastName
+            disabled: true
+          - name: _order
+            value: asc
+            disabled: true
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/accounts/"
+        name: Utwórz konto
+        meta:
+          id: req_f68bdb07da7c44a5a165b3a0db637bff
+          created: 1782815337375
+          modified: 1782815337375
+          isPrivate: false
+          description: ""
+          sortKey: -1782814900356
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "customerId": "11111111-1111-4111-8111-111111111101",
+              "iban": "PL61109010140000071219812874",
+              "currency": "PLN",
+              "balance": 1500.5
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
