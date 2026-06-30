@@ -7,7 +7,12 @@
   "scripts": {
     "dev": "tsx watch src/app.ts",
     "start": "tsx src/app.ts",
-    "spectral": "spectral lint insomnia/openapi.yaml --ruleset ./spectral/styleguide.spectral.yaml"
+    "spectral": "spectral lint insomnia/openapi.yaml --ruleset ./spectral/styleguide.spectral.yaml",
+    "inso:lint": "inso script lint",
+    "inso:test": "inso script test",
+    "inso:test:smoke": "inso script test-smoke",
+    "inso:test:auth": "inso script test-auth",
+    "inso:test:static": "inso script test-static"
   },
   "dependencies": {
     "@fastify/autoload": "^6.3.1",

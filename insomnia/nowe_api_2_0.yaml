@@ -1,0 +1,41 @@
+type: spec.insomnia.rest/5.0
+schema_version: "5.1"
+name: Nowe API 2.0
+meta:
+  id: wrk_eb818cdb879f4fd28adcbcf518a4e77c
+  created: 1782831841647
+  modified: 1782831841647
+  description: ""
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_37693702245b99b082c6a7c2f5881b7bb5907539
+    created: 1782831841684
+    modified: 1782831841684
+environments:
+  name: Base Environment
+  meta:
+    id: env_37693702245b99b082c6a7c2f5881b7bb5907539
+    created: 1782831841682
+    modified: 1782831841682
+    isPrivate: false
+spec:
+  contents:
+    openapi: 3.0.0
+    info:
+      title: API
+      version: 0.0.0
+      description: An API
+      contact:
+        name: Support
+        email: sup@rest.rodeo
+    servers:
+      - url: https://api.rest.rodeo
+        description: Live
+    paths:
+      /:
+        description: Base
+  meta:
+    id: spc_9f84faee2e7b4127b9f9c3a37944d810
+    created: 1782831854112
+    modified: 1782831854112

@@ -1,0 +1,14 @@
+[
+  {
+    "amount": 2000,
+    "transferType": "deposit"
+  },
+  {
+    "amount": 500,
+    "transferType": "withdrawal"
+  },
+  {
+    "amount": 1500,
+    "transferType": "withdrawal"
+  }
+]

@@ -9,11 +9,5 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^(\/|[a-z0-9-.]+|{[a-zA-Z0-9_]+})+$"
-
-overrides:
-  formats:
-    - format: "oas3"
-      rules:
-        path-keys-no-trailing-slash:
-          severity: off
+        match: ^(/|[a-z0-9-.]+|{[a-zA-Z0-9_]+})+$
+  path-keys-no-trailing-slash: off

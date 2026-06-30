@@ -10,6 +10,9 @@ docker ps
 
 https://github.com/ev45ive/infoshare-bnp-insomnia.git 
 
+> Po szkoleniu - fork
+https://github.com/ev45ive/infoshare-bnp-insomnia.git/fork 
+
 
 # YAML
 https://en.wikipedia.org/wiki/YAML
@@ -43,3 +46,8 @@ https://en.wikipedia.org/wiki/Regular_expression#Basic_concepts
 https://regex101.com/ 
 https://regexone.com/ 
 
+# Faker - Random Data GEenrator
+https://fakerjs.dev/api/person.html
+
+# Chai assertions
+https://www.chaijs.com/api/bdd/#method_include 
