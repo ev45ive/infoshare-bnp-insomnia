@@ -1,0 +1,20 @@
+type: environment.insomnia.rest/5.0
+schema_version: "5.1"
+name: Serwer API InsoBank
+meta:
+  id: wrk_1f599913ab5441e2b8c06c902e1f7ffe
+  created: 1782820074376
+  modified: 1782820074376
+  description: ""
+environments:
+  name: Base Environment
+  meta:
+    id: env_0abd83761bb0ba8d5ac6885296cfa6d58ea5e82e
+    created: 1782820074381
+    modified: 1782820299015
+    isPrivate: false
+  data:
+    base_url: "{{ _.base_schema }}://{{ _.base_host }}:{{ _.base_port }}"
+    base_host: localhost
+    base_port: "3000"
+    base_schema: http
