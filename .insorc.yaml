@@ -1,0 +1,26 @@
+# inso CLI configuration — https://docs.insomnia.rest/inso-cli/configuration
+#
+# NOTE: inso 3.6.0 (the npm build) runs ONLY on Node 16 because its bundled
+#       @getinsomnia/node-libcurl has no prebuilt binary for Node 18/20/24.
+#       Run `nvm use 16` before any inso command.
+#
+# Run a script below with:  inso script <name>
+# e.g.                      inso script lint
+
+options:
+  # Disable interactive prompts (suitable for scripts / CI).
+  ci: true
+  # Default Insomnia data source for `run test` and `export` commands.
+  src: insomnia/collection.json
+
+scripts:
+  # Lint the OpenAPI document with inso's built-in OpenAPI ruleset.
+  lint: inso lint spec insomnia/openapi.yaml
+
+  # Run every unit-test suite in the InsoBank collection (needs the API running).
+  test: inso run test wrk_insobank
+
+  # Run individual suites by name.
+  test-smoke: inso run test "Etap 1 — smoke"
+  test-auth: inso run test "Auth + Secure"
+  test-static: inso run test "Static + Debug"
