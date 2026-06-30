@@ -1,0 +1,1994 @@
+type: spec.insomnia.rest/5.0
+schema_version: "5.1"
+name: InsoBank Demo API 1.0.0
+meta:
+  id: wrk_209d65d02f7b497bb7f9f082f93e24e6
+  created: 1782807879883
+  modified: 1782807879883
+  description: ""
+collection:
+  - url: "{{ _.base_url }}/openapi.json"
+    name: /openapi.json
+    meta:
+      id: req_3141a8bb5e4749af9d6ccdbb28452798
+      created: 1782807879888
+      modified: 1782807879888
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879888
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/health/detailed"
+    name: /health/detailed
+    meta:
+      id: req_05b53f81a14849e4b149f4fd1555c5b1
+      created: 1782807879889
+      modified: 1782807879889
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879889
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/health"
+    name: /health
+    meta:
+      id: req_1420f3c29a754cf29b32f29102205db4
+      created: 1782807879889
+      modified: 1782807879889
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879889
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/accounts/"
+    name: Lista kont (koperta + paginacja)
+    meta:
+      id: req_982ac7d0a5dd4c12b494848da218f8ab
+      created: 1782807879890
+      modified: 1782807879890
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879890
+    method: GET
+    parameters:
+      - name: _page
+        value: "1"
+        disabled: true
+      - name: _limit
+        value: "10"
+        disabled: true
+      - name: _sort
+        value: lastName
+        disabled: true
+      - name: _order
+        value: asc
+        disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/accounts/"
+    name: Utwórz konto
+    meta:
+      id: req_1f72ade3c24b49a79c81d5519d13f00b
+      created: 1782807879891
+      modified: 1782807879891
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879891
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "customerId": "11111111-1111-4111-8111-111111111101",
+          "iban": "PL61109010140000071219812874",
+          "currency": "PLN",
+          "balance": 1500.5
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/accounts/:id/"
+    name: /accounts/{id}/
+    meta:
+      id: req_b6bc707632704566a7026500c9641c45
+      created: 1782807879891
+      modified: 1782807879891
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879891
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/accounts/:id/"
+    name: /accounts/{id}/
+    meta:
+      id: req_a1767415be064e228f4d173e3c6d8f76
+      created: 1782807879892
+      modified: 1782807879892
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879892
+    method: PUT
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/accounts/:id/"
+    name: /accounts/{id}/
+    meta:
+      id: req_cbf2621001c14b61b5c12bbeb30cc33c
+      created: 1782807879892
+      modified: 1782807879892
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879892
+    method: PATCH
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/accounts/:id/"
+    name: /accounts/{id}/
+    meta:
+      id: req_028b4e7d5ebd4dc98dd57a9081015431
+      created: 1782807879893
+      modified: 1782807879893
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879893
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/accounts/:id/balance"
+    name: /accounts/{id}/balance
+    meta:
+      id: req_8b6756827022492fb39c24a967f350f8
+      created: 1782807879893
+      modified: 1782807879893
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879893
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/accounts/:id/freeze"
+    name: /accounts/{id}/freeze
+    meta:
+      id: req_936ac6c70f6349138d1c55d5758ce5f6
+      created: 1782807879894
+      modified: 1782807879894
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879894
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/accounts/:id/unfreeze"
+    name: /accounts/{id}/unfreeze
+    meta:
+      id: req_9f0bfec00b71491ebfd27a81f6442b24
+      created: 1782807879894
+      modified: 1782807879894
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879894
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/auth/login"
+    name: Login → JWT
+    meta:
+      id: req_10414bacf69746caaebe22c03f92abf1
+      created: 1782807879895
+      modified: 1782807879895
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879895
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "username": "anna",
+          "password": "secret123"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/admin/reset"
+    name: /admin/reset
+    meta:
+      id: req_65a8e7c2f9e842508f6308d9850e88a5
+      created: 1782807879895
+      modified: 1782807879895
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879895
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/auth/logout"
+    name: /auth/logout
+    meta:
+      id: req_339dce96035240b5b4db08d6e090d484
+      created: 1782807879896
+      modified: 1782807879896
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879896
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/auth/refresh"
+    name: /auth/refresh
+    meta:
+      id: req_6dac29c1531844418d0ea51061a8f3ba
+      created: 1782807879896
+      modified: 1782807879896
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879896
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/branches/"
+    name: Lista oddziałów
+    meta:
+      id: req_9e5d6fd19db64ad9b9de3f0afd152453
+      created: 1782807879897
+      modified: 1782807879897
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879897
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/auth/oauth/token"
+    name: /auth/oauth/token
+    meta:
+      id: req_d0f1bd2a44ab47a2b0b54e433be0cd49
+      created: 1782807879897
+      modified: 1782807879897
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879897
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/customers/"
+    name: Utwórz klienta
+    meta:
+      id: req_17f4d692df8240829b0b3aac70b165b1
+      created: 1782807879898
+      modified: 1782807879898
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879898
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "firstName": "Anna",
+          "lastName": "Kowalska",
+          "email": "anna.kowalska@example.com",
+          "pesel": "90010112345",
+          "status": "active",
+          "address": {
+            "street": "string",
+            "city": "string",
+            "postalCode": "string",
+            "country": "PL"
+          }
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/customers/:id/"
+    name: Klient po ID
+    meta:
+      id: req_276c6550e36e4659a63cfe3b39e6f1ee
+      created: 1782807879898
+      modified: 1782807879898
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879898
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/customers/"
+    name: Lista klientów (koperta + paginacja)
+    meta:
+      id: req_ab08af56344a4a4381a4a5544b4ef43f
+      created: 1782807879898
+      modified: 1782807879898
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879898
+    method: GET
+    parameters:
+      - name: _page
+        value: "1"
+        disabled: true
+      - name: _limit
+        value: "10"
+        disabled: true
+      - name: _sort
+        value: lastName
+        disabled: true
+      - name: _order
+        value: asc
+        disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/customers/:id/"
+    name: Zamień klienta
+    meta:
+      id: req_5a563268442f4601837e538df2803dd5
+      created: 1782807879899
+      modified: 1782807879899
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879899
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "firstName": "Anna",
+          "lastName": "Kowalska",
+          "email": "anna.kowalska@example.com",
+          "pesel": "90010112345",
+          "status": "active",
+          "address": {
+            "street": "string",
+            "city": "string",
+            "postalCode": "string",
+            "country": "PL"
+          }
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/customers/:id/"
+    name: Aktualizuj klienta
+    meta:
+      id: req_c6d5b078715d4a5fb17bae5698361a8c
+      created: 1782807879899
+      modified: 1782807879899
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879899
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "firstName": "Anna",
+          "lastName": "Kowalska",
+          "email": "anna.kowalska@example.com",
+          "pesel": "90010112345",
+          "status": "active",
+          "address": {
+            "street": "string",
+            "city": "string",
+            "postalCode": "string",
+            "country": "PL"
+          }
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/customers/:id/accounts/"
+    name: /customers/{id}/accounts/
+    meta:
+      id: req_092f10b611f84988832664455b4ab595
+      created: 1782807879900
+      modified: 1782807879900
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879900
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/customers/:id/"
+    name: Usuń klienta
+    meta:
+      id: req_d9142795bb40482a897d76b95426ecdc
+      created: 1782807879900
+      modified: 1782807879900
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879900
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/exchange-rates/"
+    name: Kursy walut
+    meta:
+      id: req_0ffcd30778084b5189c75f5b85479305
+      created: 1782807879901
+      modified: 1782807879901
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879901
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/debug/crash"
+    name: /debug/crash
+    meta:
+      id: req_37c78b30413e415c8cf8140495dad363
+      created: 1782807879901
+      modified: 1782807879901
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879901
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/debug/echo"
+    name: /debug/echo
+    meta:
+      id: req_d2dc8080ef464bc087f4c478c17c3b46
+      created: 1782807879901
+      modified: 1782807879901
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879901
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/me/"
+    name: /me/
+    meta:
+      id: req_f22f0e72ef544ee49f7d7f340150e1d4
+      created: 1782807879902
+      modified: 1782807879902
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879902
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/products/"
+    name: Lista produktów
+    meta:
+      id: req_59918da81a874a3fa9a3440b6345031f
+      created: 1782807879903
+      modified: 1782807879903
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879903
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/transactions/"
+    name: Lista transakcji
+    meta:
+      id: req_5252899985f5463ea97a77f308e26a61
+      created: 1782807879904
+      modified: 1782807879904
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879904
+    method: GET
+    parameters:
+      - name: _page
+        value: "1"
+        disabled: true
+      - name: _limit
+        value: "10"
+        disabled: true
+      - name: _sort
+        value: lastName
+        disabled: true
+      - name: _order
+        value: asc
+        disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/protected/report"
+    name: /protected/report
+    meta:
+      id: req_66a752e143ec4937971f339063df29cb
+      created: 1782807879904
+      modified: 1782807879904
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879904
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/protected/basic"
+    name: /protected/basic
+    meta:
+      id: req_9da2b5ced3fa4f8fb0a5695f4576cda9
+      created: 1782807879904
+      modified: 1782807879904
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879904
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/transactions/"
+    name: Zaksięguj wpłatę/wypłatę
+    meta:
+      id: req_2de6449bcba445cba73684c2b878e978
+      created: 1782807879905
+      modified: 1782807879905
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879905
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "accountId": "string",
+          "type": "deposit",
+          "amount": 100,
+          "currency": "PLN"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/transactions/:id/"
+    name: /transactions/{id}/
+    meta:
+      id: req_a7e7d97447554c91b7e74a59779db6f5
+      created: 1782807879905
+      modified: 1782807879905
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879905
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/transactions/:id/cancel"
+    name: /transactions/{id}/cancel
+    meta:
+      id: req_01e807fd02214211a2c8e21fd5fd82cc
+      created: 1782807879906
+      modified: 1782807879906
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879906
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/v1/customers/"
+    name: Klienci (v1, deprecated)
+    meta:
+      id: req_5e31128a024b454583b6c304008696db
+      created: 1782807879906
+      modified: 1782807879906
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879906
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/v2/customers/"
+    name: Klienci (v2)
+    meta:
+      id: req_aafacbbd830049f48c201f265a721b2b
+      created: 1782807879907
+      modified: 1782807879907
+      isPrivate: false
+      description: ""
+      sortKey: -1782807879907
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_435fe605f2263a44f65e5b32dffb37b587a42aeb
+    created: 1782807880319
+    modified: 1782807880319
+environments:
+  name: Base environment
+  meta:
+    id: env_1c80b40d265a4cd9a115d0c41717748b
+    created: 1782807879887
+    modified: 1782807879887
+    isPrivate: false
+  data:
+    base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
+  subEnvironments:
+    - name: OpenAPI env localhost:3000
+      meta:
+        id: env_82724bd924ad41a1a9226bb555ea8f37
+        created: 1782807879887
+        modified: 1782807879887
+        isPrivate: false
+        sortKey: 1782807879887
+      data:
+        scheme: http
+        base_path: ""
+        host: localhost:3000
+spec:
+  contents:
+    openapi: 3.1.0
+    info:
+      title: InsoBank Demo API
+      version: 1.0.0
+      description: |
+        # Nowe API BANKU
+        > Mądry cytat
+        Lista:
+          * Ważne
+          * **bold**,
+      contact:
+        name: Banana
+    components:
+      schemas:
+        Address:
+          type: object
+          properties:
+            street:
+              type: string
+            city:
+              type: string
+            postalCode:
+              type: string
+            country:
+              default: PL
+              type: string
+          required:
+            - street
+            - city
+            - postalCode
+        Account:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+            customerId:
+              example: 11111111-1111-4111-8111-111111111101
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+            iban:
+              example: PL61109010140000071219812874
+              type: string
+            currency:
+              default: PLN
+              type: string
+              enum:
+                - PLN
+                - EUR
+                - USD
+            balance:
+              example: 1500.5
+              type: number
+              minimum: 0
+            status:
+              default: active
+              type: string
+              enum:
+                - active
+                - frozen
+            createdAt:
+              type: string
+              format: date-time
+              pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+          required:
+            - id
+            - customerId
+            - iban
+            - currency
+            - balance
+            - status
+            - createdAt
+          additionalProperties: false
+        Branch:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+            name:
+              example: InsoBank Warszawa Centrum
+              type: string
+            city:
+              example: Warszawa
+              type: string
+            address:
+              type: string
+            phone:
+              type: string
+          required:
+            - id
+            - name
+            - city
+            - address
+            - phone
+          additionalProperties: false
+        Customer:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+            firstName:
+              example: Anna
+              type: string
+              minLength: 1
+            lastName:
+              example: Kowalska
+              type: string
+              minLength: 1
+            email:
+              example: anna.kowalska@example.com
+              type: string
+              format: email
+              pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+            pesel:
+              example: "90010112345"
+              type: string
+            status:
+              default: active
+              type: string
+              enum:
+                - active
+                - inactive
+            address:
+              $ref: "#/components/schemas/AddressOutput"
+            createdAt:
+              type: string
+              format: date-time
+              pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+          required:
+            - id
+            - firstName
+            - lastName
+            - email
+            - pesel
+            - status
+            - createdAt
+          additionalProperties: false
+        ExchangeRate:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+            base:
+              type: string
+              enum:
+                - PLN
+                - EUR
+                - USD
+            quote:
+              type: string
+              enum:
+                - PLN
+                - EUR
+                - USD
+            rate:
+              example: 4.32
+              type: number
+              exclusiveMinimum: 0
+          required:
+            - id
+            - base
+            - quote
+            - rate
+          additionalProperties: false
+        Product:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+            name:
+              example: Konto Osobiste
+              type: string
+            type:
+              type: string
+              enum:
+                - account
+                - card
+                - deposit
+            monthlyFee:
+              example: 0
+              type: number
+              minimum: 0
+            currency:
+              default: PLN
+              type: string
+              enum:
+                - PLN
+                - EUR
+                - USD
+          required:
+            - id
+            - name
+            - type
+            - monthlyFee
+            - currency
+          additionalProperties: false
+        Transaction:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+            accountId:
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+            type:
+              example: deposit
+              type: string
+              enum:
+                - deposit
+                - withdrawal
+            amount:
+              example: 100
+              type: number
+              exclusiveMinimum: 0
+            currency:
+              default: PLN
+              type: string
+              enum:
+                - PLN
+                - EUR
+                - USD
+            status:
+              default: completed
+              type: string
+              enum:
+                - completed
+                - cancelled
+            createdAt:
+              type: string
+              format: date-time
+              pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+          required:
+            - id
+            - accountId
+            - type
+            - amount
+            - currency
+            - status
+            - createdAt
+          additionalProperties: false
+        AddressOutput:
+          type: object
+          properties:
+            street:
+              type: string
+            city:
+              type: string
+            postalCode:
+              type: string
+            country:
+              default: PL
+              type: string
+          required:
+            - street
+            - city
+            - postalCode
+            - country
+          additionalProperties: false
+        CustomerOutput:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+            firstName:
+              example: Anna
+              type: string
+              minLength: 1
+            lastName:
+              example: Kowalska
+              type: string
+              minLength: 1
+            email:
+              example: anna.kowalska@example.com
+              type: string
+              format: email
+              pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+            pesel:
+              example: "90010112345"
+              type: string
+            status:
+              default: active
+              type: string
+              enum:
+                - active
+                - inactive
+            address:
+              $ref: "#/components/schemas/AddressOutput"
+            createdAt:
+              type: string
+              format: date-time
+              pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$
+          required:
+            - id
+            - firstName
+            - lastName
+            - email
+            - pesel
+            - status
+            - createdAt
+          additionalProperties: false
+    tags:
+      - name: customers
+      - name: accounts
+    paths:
+      /openapi.json:
+        get:
+          responses:
+            "200":
+              description: Default Response
+      /health:
+        get:
+          responses:
+            "200":
+              description: Default Response
+      /health/detailed:
+        get:
+          responses:
+            "200":
+              description: Default Response
+      /accounts/:
+        get:
+          summary: Lista kont (koperta + paginacja)
+          tags:
+            - accounts
+          parameters:
+            - schema:
+                description: Numer strony (od 1)
+                example: 1
+                default: 1
+                type: integer
+                minimum: 1
+                maximum: 9007199254740991
+              in: query
+              name: _page
+              description: Numer strony (od 1)
+            - schema:
+                description: Liczba wyników na stronę (max 100)
+                example: 10
+                default: 10
+                type: integer
+                minimum: 1
+                maximum: 100
+              in: query
+              name: _limit
+              description: Liczba wyników na stronę (max 100)
+            - schema:
+                description: Pole sortowania
+                example: lastName
+                type: string
+              in: query
+              name: _sort
+              description: Pole sortowania
+            - schema:
+                description: Kierunek sortowania
+                example: asc
+                type: string
+                enum:
+                  - asc
+                  - desc
+              in: query
+              name: _order
+              description: Kierunek sortowania
+          responses:
+            "200":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      data:
+                        description: Lista zasobów
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Account"
+                      total:
+                        description: Łączna liczba rekordów
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      page:
+                        description: Bieżąca strona
+                        type: integer
+                        exclusiveMinimum: 0
+                        maximum: 9007199254740991
+                      limit:
+                        description: Rozmiar strony
+                        type: integer
+                        exclusiveMinimum: 0
+                        maximum: 9007199254740991
+                      pages:
+                        description: Łączna liczba stron
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                    required:
+                      - data
+                      - total
+                      - page
+                      - limit
+                      - pages
+                    additionalProperties: false
+        post:
+          summary: Utwórz konto
+          tags:
+            - accounts
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    customerId:
+                      example: 11111111-1111-4111-8111-111111111101
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+                    iban:
+                      example: PL61109010140000071219812874
+                      type: string
+                    currency:
+                      default: PLN
+                      type: string
+                      enum:
+                        - PLN
+                        - EUR
+                        - USD
+                    balance:
+                      example: 1500.5
+                      type: number
+                      minimum: 0
+                  required:
+                    - customerId
+                    - iban
+                    - balance
+          responses:
+            "201":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Account"
+      /accounts/{id}/:
+        get:
+          parameters:
+            - schema:
+                type: string
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+        put:
+          parameters:
+            - schema:
+                type: string
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+        patch:
+          parameters:
+            - schema:
+                type: string
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+        delete:
+          parameters:
+            - schema:
+                type: string
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+      /accounts/{id}/balance:
+        get:
+          parameters:
+            - schema:
+                type: string
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+      /accounts/{id}/freeze:
+        post:
+          parameters:
+            - schema:
+                type: string
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+      /accounts/{id}/unfreeze:
+        post:
+          parameters:
+            - schema:
+                type: string
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+      /admin/reset:
+        post:
+          responses:
+            "200":
+              description: Default Response
+      /auth/login:
+        post:
+          summary: Login → JWT
+          tags:
+            - auth
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    username:
+                      example: anna
+                      type: string
+                      minLength: 3
+                    password:
+                      example: secret123
+                      type: string
+                      minLength: 4
+                  required:
+                    - username
+                    - password
+          responses:
+            "200":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      access_token:
+                        type: string
+                      token_type:
+                        type: string
+                    required:
+                      - access_token
+                      - token_type
+                    additionalProperties: false
+      /auth/refresh:
+        post:
+          responses:
+            "200":
+              description: Default Response
+      /auth/logout:
+        post:
+          responses:
+            "200":
+              description: Default Response
+      /auth/oauth/token:
+        post:
+          responses:
+            "200":
+              description: Default Response
+      /branches/:
+        get:
+          summary: Lista oddziałów
+          tags:
+            - branches
+          responses:
+            "200":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Branch"
+                      total:
+                        type: number
+                    required:
+                      - data
+                      - total
+                    additionalProperties: false
+      /customers/:
+        get:
+          summary: Lista klientów (koperta + paginacja)
+          tags:
+            - customers
+          parameters:
+            - schema:
+                description: Numer strony (od 1)
+                example: 1
+                default: 1
+                type: integer
+                minimum: 1
+                maximum: 9007199254740991
+              in: query
+              name: _page
+              description: Numer strony (od 1)
+            - schema:
+                description: Liczba wyników na stronę (max 100)
+                example: 10
+                default: 10
+                type: integer
+                minimum: 1
+                maximum: 100
+              in: query
+              name: _limit
+              description: Liczba wyników na stronę (max 100)
+            - schema:
+                description: Pole sortowania
+                example: lastName
+                type: string
+              in: query
+              name: _sort
+              description: Pole sortowania
+            - schema:
+                description: Kierunek sortowania
+                example: asc
+                type: string
+                enum:
+                  - asc
+                  - desc
+              in: query
+              name: _order
+              description: Kierunek sortowania
+          responses:
+            "200":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      data:
+                        description: Lista zasobów
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/CustomerOutput"
+                      total:
+                        description: Łączna liczba rekordów
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      page:
+                        description: Bieżąca strona
+                        type: integer
+                        exclusiveMinimum: 0
+                        maximum: 9007199254740991
+                      limit:
+                        description: Rozmiar strony
+                        type: integer
+                        exclusiveMinimum: 0
+                        maximum: 9007199254740991
+                      pages:
+                        description: Łączna liczba stron
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                    required:
+                      - data
+                      - total
+                      - page
+                      - limit
+                      - pages
+                    additionalProperties: false
+        post:
+          summary: Utwórz klienta
+          tags:
+            - customers
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    firstName:
+                      example: Anna
+                      type: string
+                      minLength: 1
+                    lastName:
+                      example: Kowalska
+                      type: string
+                      minLength: 1
+                    email:
+                      example: anna.kowalska@example.com
+                      type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                    pesel:
+                      example: "90010112345"
+                      type: string
+                    status:
+                      default: active
+                      type: string
+                      enum:
+                        - active
+                        - inactive
+                    address:
+                      $ref: "#/components/schemas/Address"
+                  required:
+                    - firstName
+                    - lastName
+                    - email
+                    - pesel
+          responses:
+            "201":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/CustomerOutput"
+      /customers/{id}/:
+        get:
+          summary: Klient po ID
+          tags:
+            - customers
+          parameters:
+            - schema:
+                type: string
+                format: uuid
+                pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/CustomerOutput"
+        put:
+          summary: Zamień klienta
+          tags:
+            - customers
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    firstName:
+                      example: Anna
+                      type: string
+                      minLength: 1
+                    lastName:
+                      example: Kowalska
+                      type: string
+                      minLength: 1
+                    email:
+                      example: anna.kowalska@example.com
+                      type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                    pesel:
+                      example: "90010112345"
+                      type: string
+                    status:
+                      default: active
+                      type: string
+                      enum:
+                        - active
+                        - inactive
+                    address:
+                      $ref: "#/components/schemas/Address"
+                  required:
+                    - firstName
+                    - lastName
+                    - email
+                    - pesel
+          parameters:
+            - schema:
+                type: string
+                format: uuid
+                pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/CustomerOutput"
+        patch:
+          summary: Aktualizuj klienta
+          tags:
+            - customers
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    firstName:
+                      example: Anna
+                      type: string
+                      minLength: 1
+                    lastName:
+                      example: Kowalska
+                      type: string
+                      minLength: 1
+                    email:
+                      example: anna.kowalska@example.com
+                      type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                    pesel:
+                      example: "90010112345"
+                      type: string
+                    status:
+                      default: active
+                      type: string
+                      enum:
+                        - active
+                        - inactive
+                    address:
+                      $ref: "#/components/schemas/Address"
+          parameters:
+            - schema:
+                type: string
+                format: uuid
+                pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/CustomerOutput"
+        delete:
+          summary: Usuń klienta
+          tags:
+            - customers
+          parameters:
+            - schema:
+                type: string
+                format: uuid
+                pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+      /customers/{id}/accounts/:
+        get:
+          parameters:
+            - schema:
+                type: string
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+      /debug/crash:
+        get:
+          responses:
+            "200":
+              description: Default Response
+      /debug/echo:
+        get:
+          responses:
+            "200":
+              description: Default Response
+      /exchange-rates/:
+        get:
+          summary: Kursy walut
+          tags:
+            - exchange-rates
+          responses:
+            "200":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/ExchangeRate"
+                      total:
+                        type: number
+                    required:
+                      - data
+                      - total
+                    additionalProperties: false
+      /me/:
+        get:
+          responses:
+            "200":
+              description: Default Response
+      /products/:
+        get:
+          summary: Lista produktów
+          tags:
+            - products
+          responses:
+            "200":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Product"
+                      total:
+                        type: number
+                    required:
+                      - data
+                      - total
+                    additionalProperties: false
+      /protected/report:
+        get:
+          responses:
+            "200":
+              description: Default Response
+      /protected/basic:
+        get:
+          responses:
+            "200":
+              description: Default Response
+      /transactions/:
+        get:
+          summary: Lista transakcji
+          tags:
+            - transactions
+          parameters:
+            - schema:
+                description: Numer strony (od 1)
+                example: 1
+                default: 1
+                type: integer
+                minimum: 1
+                maximum: 9007199254740991
+              in: query
+              name: _page
+              description: Numer strony (od 1)
+            - schema:
+                description: Liczba wyników na stronę (max 100)
+                example: 10
+                default: 10
+                type: integer
+                minimum: 1
+                maximum: 100
+              in: query
+              name: _limit
+              description: Liczba wyników na stronę (max 100)
+            - schema:
+                description: Pole sortowania
+                example: lastName
+                type: string
+              in: query
+              name: _sort
+              description: Pole sortowania
+            - schema:
+                description: Kierunek sortowania
+                example: asc
+                type: string
+                enum:
+                  - asc
+                  - desc
+              in: query
+              name: _order
+              description: Kierunek sortowania
+          responses:
+            "200":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      data:
+                        description: Lista zasobów
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Transaction"
+                      total:
+                        description: Łączna liczba rekordów
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      page:
+                        description: Bieżąca strona
+                        type: integer
+                        exclusiveMinimum: 0
+                        maximum: 9007199254740991
+                      limit:
+                        description: Rozmiar strony
+                        type: integer
+                        exclusiveMinimum: 0
+                        maximum: 9007199254740991
+                      pages:
+                        description: Łączna liczba stron
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                    required:
+                      - data
+                      - total
+                      - page
+                      - limit
+                      - pages
+                    additionalProperties: false
+        post:
+          summary: Zaksięguj wpłatę/wypłatę
+          tags:
+            - transactions
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    accountId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$
+                    type:
+                      example: deposit
+                      type: string
+                      enum:
+                        - deposit
+                        - withdrawal
+                    amount:
+                      example: 100
+                      type: number
+                      exclusiveMinimum: 0
+                    currency:
+                      default: PLN
+                      type: string
+                      enum:
+                        - PLN
+                        - EUR
+                        - USD
+                  required:
+                    - accountId
+                    - type
+                    - amount
+          responses:
+            "201":
+              description: Default Response
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Transaction"
+      /transactions/{id}/:
+        get:
+          parameters:
+            - schema:
+                type: string
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+      /transactions/{id}/cancel:
+        post:
+          parameters:
+            - schema:
+                type: string
+              in: path
+              name: id
+              required: true
+          responses:
+            "200":
+              description: Default Response
+      /v1/customers/:
+        get:
+          summary: Klienci (v1, deprecated)
+          tags:
+            - v1
+          responses:
+            "200":
+              description: Default Response
+      /v2/customers/:
+        get:
+          summary: Klienci (v2)
+          tags:
+            - v2
+          responses:
+            "200":
+              description: Default Response
+    servers:
+      - url: http://localhost:3000
+  meta:
+    id: spc_d9aec754bf6b49ac9a8868fed2c96587
+    created: 1782807879885
+    modified: 1782809288117
