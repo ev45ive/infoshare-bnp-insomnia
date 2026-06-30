@@ -266,12 +266,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-  - name: Stare ...
+  - name: Inne
     meta:
       id: fld_96ed19beda1c457b84455cd6acc02da1
       created: 1782814353153
-      modified: 1782814353153
-      sortKey: -1782814353153
+      modified: 1782819591155
+      sortKey: -1000000000
       description: ""
     children:
       - url: http://localhost:3000/customers/
@@ -543,8 +543,8 @@ collection:
     meta:
       id: fld_53f194d36ff14373a602d135d2791e0e
       created: 1782815042666
-      modified: 1782815042666
-      sortKey: -1000000000
+      modified: 1782819594363
+      sortKey: -891907024215.5
       description: ""
     children:
       - url: "{{ _.base_url }}/products/"
@@ -569,8 +569,8 @@ collection:
     meta:
       id: fld_7dc314c29c0d4ac188607381e0f5eac6
       created: 1782815058232
-      modified: 1782815058232
-      sortKey: -1000000000
+      modified: 1782819597140
+      sortKey: -446453512107.75
       description: ""
     children:
       - url: "{{ _.base_url }}/branches/"
