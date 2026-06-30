@@ -11,7 +11,7 @@ collection:
     meta:
       id: fld_039469bef4f34c3482a1b1c9ea48e52b
       created: 1782821832664
-      modified: 1782827072017
+      modified: 1782827727274
       sortKey: -1782821832664
       description: ""
     children:
@@ -20,7 +20,7 @@ collection:
         meta:
           id: req_458b96aaac05496fa714456db94379f9
           created: 1782821899942
-          modified: 1782827012194
+          modified: 1782827721567
           isPrivate: false
           description: ""
           sortKey: -1782821936527
@@ -34,11 +34,11 @@ collection:
             	"email": "{% faker 'randomExampleEmail' %}",
             	"pesel": "{% faker 'randomInt' %}",
             	 
-              "status": "{{ _.new_customer_status }}",
+              "status": "{{ _.new_customer_status }}"
              
 
-            	{% if showAddress %}
-              "address": {
+            	{% if showAddress == true %}
+              ,"address": {
             		"street": "string",
             		"city": "string",
             		"postalCode": "string",
@@ -73,6 +73,10 @@ collection:
 
 
             console.log("my_variable:" , showAddress);
+
+
+            // insomnia.request.body.update({ mode: 'raw', raw:
+            JSON.stringify({})})
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -243,26 +247,26 @@ collection:
             store: true
           rebuildPath: true
     environment:
-      new_customer_status: active
+      new_customer_status: inactive
 cookieJar:
   name: Default Jar
   meta:
     id: jar_5af274e0dbdbf21e636948b0d2ab07cbd72c7511
     created: 1782821651610
-    modified: 1782827072012
+    modified: 1782827727268
 environments:
   name: Base Environment
   meta:
     id: env_5af274e0dbdbf21e636948b0d2ab07cbd72c7511
     created: 1782821651608
-    modified: 1782827072013
+    modified: 1782827727270
     isPrivate: false
   subEnvironments:
     - name: administrator
       meta:
         id: env_0f816c1faede4b47a17624607ac7e46d
         created: 1782822401594
-        modified: 1782827072013
+        modified: 1782827727269
         isPrivate: false
         sortKey: 1782822401594
       data:
