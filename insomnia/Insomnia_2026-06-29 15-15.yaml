@@ -81,7 +81,7 @@ collection:
     meta:
       id: fld_7b7d21df9d6e47eab167c79ba741cb07
       created: 1782814249818
-      modified: 1782814333539
+      modified: 1782821179559
       sortKey: -1782814048531
       description: ""
     children:
@@ -146,7 +146,7 @@ collection:
         meta:
           id: req_75244ca2dcc6442a96c367f1e2489534
           created: 1782814249818
-          modified: 1782814249818
+          modified: 1782821239327
           isPrivate: false
           description: ""
           sortKey: -1782814048442
@@ -184,17 +184,21 @@ collection:
         meta:
           id: req_c87a7e6f416a4c3186b823ffac4f16d9
           created: 1782814249818
-          modified: 1782814249818
+          modified: 1782821324590
           isPrivate: false
           description: ""
           sortKey: -1782814048442
         method: GET
         parameters:
-          - name: _page
-            value: "1"
-            disabled: true
+          - name: _limit
+            value: "{{ _.limit }}"
+            disabled: false
           - name: _limit
             value: "10"
+            description: ""
+            disabled: true
+          - name: _page
+            value: "1"
             disabled: true
           - name: _sort
             value: lastName
@@ -253,7 +257,7 @@ collection:
         meta:
           id: req_e9302973665a4288ad0067a2cbc97443
           created: 1782814249818
-          modified: 1782814249818
+          modified: 1782820931139
           isPrivate: false
           description: ""
           sortKey: -1782814048443
@@ -266,6 +270,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
+        pathParameters:
+          - name: id
+            value: "{{ _.customerId }}"
+    environment:
+      customerId: 2134564321`
+      limit: "5"
   - name: Inne
     meta:
       id: fld_96ed19beda1c457b84455cd6acc02da1
@@ -604,3 +614,18 @@ environments:
     created: 1782734783279
     modified: 1782734783279
     isPrivate: false
+  subEnvironments:
+    - name: Admin Session
+      meta:
+        id: env_c32c65d4689347e5a959325299f07efd
+        created: 1782820768126
+        modified: 1782820775172
+        isPrivate: false
+        sortKey: 1782820768126
+    - name: User Sesssion
+      meta:
+        id: env_6dc6f57bcf114fe0a96e5dcbee70f98b
+        created: 1782820775931
+        modified: 1782820787853
+        isPrivate: false
+        sortKey: 1782820775931

@@ -18,3 +18,13 @@ environments:
     base_host: localhost
     base_port: "3000"
     base_schema: http
+  subEnvironments:
+    - name: Testing
+      meta:
+        id: env_724684af62c846a19c4de3455bbea2ea
+        created: 1782820510600
+        modified: 1782820537223
+        isPrivate: false
+        sortKey: 1782820510600
+      data:
+        base_port: "9000"
