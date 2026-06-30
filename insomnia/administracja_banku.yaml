@@ -6,6 +6,187 @@ meta:
   created: 1782821651574
   modified: 1782821651574
   description: ""
+collection:
+  - name: Zarządzanie klientami (customers)
+    meta:
+      id: fld_039469bef4f34c3482a1b1c9ea48e52b
+      created: 1782821832664
+      modified: 1782821858907
+      sortKey: -1782821832664
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/customers/"
+        name: Utwórz klienta
+        meta:
+          id: req_458b96aaac05496fa714456db94379f9
+          created: 1782821899942
+          modified: 1782821955989
+          isPrivate: false
+          description: ""
+          sortKey: -1782821936527
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "firstName": "Anna",
+              "lastName": "Kowalska",
+              "email": "anna.kowalska@example.com",
+              "pesel": "90010112345",
+              "status": "active",
+              "address": {
+                "street": "string",
+                "city": "string",
+                "postalCode": "string",
+                "country": "PL"
+              }
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/customers/:id/"
+        name: Aktywacja konta klienta
+        meta:
+          id: req_4829412c64e64f5b9d507ebc2fdaed20
+          created: 1782821899942
+          modified: 1782822017213
+          isPrivate: false
+          description: ""
+          sortKey: -1782821936427
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "firstName": "Anna",
+              "lastName": "Kowalska",
+              "email": "anna.kowalska@example.com",
+              "pesel": "90010112345",
+              "status": "active",
+              "address": {
+                "street": "string",
+                "city": "string",
+                "postalCode": "string",
+                "country": "PL"
+              }
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/customers/"
+        name: Wyszukaj klienta
+        meta:
+          id: req_4a4be204683f406685ca21d8d76d0ffb
+          created: 1782821899942
+          modified: 1782822044419
+          isPrivate: false
+          description: ""
+          sortKey: -1782821936627
+        method: GET
+        parameters:
+          - name: _page
+            value: "1"
+            disabled: true
+          - name: _limit
+            value: "10"
+            disabled: true
+          - name: _sort
+            value: lastName
+            disabled: true
+          - name: _order
+            value: asc
+            disabled: true
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/customers/:id/"
+        name: Szczegóły klienta
+        meta:
+          id: req_4ef9e715b9754464a254443eaba490fb
+          created: 1782821899942
+          modified: 1782822059067
+          isPrivate: false
+          description: ""
+          sortKey: -1782821936327
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/customers/:id/"
+        name: Usuń klienta
+        meta:
+          id: req_b911e210ff7c4f7a9bb2df1911e661a8
+          created: 1782821899942
+          modified: 1782822066517
+          isPrivate: false
+          description: ""
+          sortKey: -1782821936227
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/auth/login"
+        name: Login → JWT
+        meta:
+          id: req_b3d948debda343a4b9f976968f682b86
+          created: 1782821927559
+          modified: 1782821936772
+          isPrivate: false
+          description: ""
+          sortKey: -1782821936727
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "username": "anna",
+              "password": "secret123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
