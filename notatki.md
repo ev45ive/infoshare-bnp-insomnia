@@ -27,3 +27,9 @@ https://spec.openapis.org/oas/latest.html#objects-and-fields
 https://jsonpath.com/ 
 https://www.npmjs.com/package/jsonpath-plus
 https://www.rfc-editor.org/rfc/rfc9535.html
+
+# Regexp - Regular Expressions
+https://en.wikipedia.org/wiki/Regular_expression#Basic_concepts 
+https://regex101.com/ 
+https://regexone.com/ 
+
