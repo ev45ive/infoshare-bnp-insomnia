@@ -11,7 +11,7 @@ collection:
     meta:
       id: fld_039469bef4f34c3482a1b1c9ea48e52b
       created: 1782821832664
-      modified: 1782821858907
+      modified: 1782827072017
       sortKey: -1782821832664
       description: ""
     children:
@@ -20,7 +20,7 @@ collection:
         meta:
           id: req_458b96aaac05496fa714456db94379f9
           created: 1782821899942
-          modified: 1782821955989
+          modified: 1782827012194
           isPrivate: false
           description: ""
           sortKey: -1782821936527
@@ -29,22 +29,50 @@ collection:
           mimeType: application/json
           text: |-
             {
-              "firstName": "Anna",
-              "lastName": "Kowalska",
-              "email": "anna.kowalska@example.com",
-              "pesel": "90010112345",
-              "status": "active",
+            	"firstName": "{% faker 'randomFirstName' %}",
+            	"lastName": "{% faker 'randomLastName' %}",
+            	"email": "{% faker 'randomExampleEmail' %}",
+            	"pesel": "{% faker 'randomInt' %}",
+            	 
+              "status": "{{ _.new_customer_status }}",
+             
+
+            	{% if showAddress %}
               "address": {
-                "street": "string",
-                "city": "string",
-                "postalCode": "string",
-                "country": "PL"
-              }
+            		"street": "string",
+            		"city": "string",
+            		"postalCode": "string",
+            		"country": "PL"
+            	}
+              {% endif %}
             }
         headers:
           - name: Content-Type
             value: application/json
-            disabled: false
+        scripts:
+          preRequest: >-
+            const new_customer_status =
+            insomnia.variables.get("new_customer_status") || 'inactive';
+
+
+            insomnia.variables.localVars.set("new_customer_status",
+            new_customer_status); 
+
+
+            console.log('new_customer_status',new_customer_status)
+
+
+            // 
+
+
+            const showAddress = await insomnia.environment.replaceIn("{{
+            $randomBoolean }}");
+
+
+            insomnia.variables.localVars.set("showAddress", showAddress); 
+
+
+            console.log("my_variable:" , showAddress);
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -96,7 +124,7 @@ collection:
         meta:
           id: req_4a4be204683f406685ca21d8d76d0ffb
           created: 1782821899942
-          modified: 1782822044419
+          modified: 1782824032307
           isPrivate: false
           description: ""
           sortKey: -1782821936627
@@ -113,6 +141,10 @@ collection:
             disabled: true
           - name: _order
             value: asc
+            disabled: true
+          - name: email
+            value: anna.kowalska@example.com
+            description: ""
             disabled: true
         settings:
           renderRequestBody: true
@@ -192,7 +224,7 @@ collection:
         meta:
           id: req_ced8492b9d334fa6a8690280f7f21434
           created: 1782822942135
-          modified: 1782823629725
+          modified: 1782823753697
           isPrivate: false
           description: ""
           sortKey: -1782821936677
@@ -210,25 +242,27 @@ collection:
             send: true
             store: true
           rebuildPath: true
+    environment:
+      new_customer_status: active
 cookieJar:
   name: Default Jar
   meta:
     id: jar_5af274e0dbdbf21e636948b0d2ab07cbd72c7511
     created: 1782821651610
-    modified: 1782821651610
+    modified: 1782827072012
 environments:
   name: Base Environment
   meta:
     id: env_5af274e0dbdbf21e636948b0d2ab07cbd72c7511
     created: 1782821651608
-    modified: 1782821651608
+    modified: 1782827072013
     isPrivate: false
   subEnvironments:
     - name: administrator
       meta:
         id: env_0f816c1faede4b47a17624607ac7e46d
         created: 1782822401594
-        modified: 1782822436436
+        modified: 1782827072013
         isPrivate: false
         sortKey: 1782822401594
       data:
