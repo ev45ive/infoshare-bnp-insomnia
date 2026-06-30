@@ -42,7 +42,7 @@ collection:
     meta:
       id: fld_daf2c3753d1b42028cc81425a9d69402
       created: 1782829113145
-      modified: 1782829794943
+      modified: 1782830313627
       sortKey: -1782829113145
       description: ""
     children:
@@ -106,7 +106,7 @@ collection:
         meta:
           id: req_58ee0a7828cf4fbc8574fa0d44b83c87
           created: 1782828985725
-          modified: 1782829185430
+          modified: 1782830306085
           isPrivate: false
           description: ""
           sortKey: -1782829119820
@@ -119,12 +119,16 @@ collection:
             send: true
             store: true
           rebuildPath: true
+        pathParameters:
+          - name: id
+            value: "{% response 'body', 'req_e265f3fb1fb54486b1730cb01eda17a3',
+              'b64::JC5kYXRhWzBdLmlk::46b', 'no-history', 60 %}"
       - url: "{{ _.base_url }}/customers/:id/accounts/"
         name: /customers/{id}/accounts/
         meta:
           id: req_e265f3fb1fb54486b1730cb01eda17a3
           created: 1782829006457
-          modified: 1782829134949
+          modified: 1782829956572
           isPrivate: false
           description: ""
           sortKey: -1782829119920
@@ -137,12 +141,16 @@ collection:
             send: true
             store: true
           rebuildPath: true
+        pathParameters:
+          - name: id
+            value: "{% response 'body', 'req_764bc3df074a425b801256abb4b7d755',
+              'b64::JC5jdXN0b21lcklk::46b', 'no-history', 60 %}"
       - url: "{{ _.base_url }}/accounts/:id/balance"
         name: Balans PO
         meta:
           id: req_29bcf168c16a4e398c23594eb9170386
           created: 1782829180045
-          modified: 1782829180045
+          modified: 1782830308294
           isPrivate: false
           description: ""
           sortKey: -1782825528273.5
@@ -155,11 +163,15 @@ collection:
             send: true
             store: true
           rebuildPath: true
+        pathParameters:
+          - name: id
+            value: "{% response 'body', 'req_e265f3fb1fb54486b1730cb01eda17a3',
+              'b64::JC5kYXRhWzBdLmlk::46b', 'no-history', 60 %}"
       - name: Operacje
         meta:
           id: fld_9cdcb2bae51d420db19ea3304a5a4e19
           created: 1782829154566
-          modified: 1782829157986
+          modified: 1782830294442
           sortKey: -1782829119720
           description: ""
         children:
@@ -168,16 +180,16 @@ collection:
             meta:
               id: req_f4940ffe085f4c789a6b729e6666716d
               created: 1782829071258
-              modified: 1782829161189
+              modified: 1782830283565
               isPrivate: false
               description: ""
               sortKey: -1782829161154
             method: POST
             body:
               mimeType: application/json
-              text: |-
+              text: >-
                 {
-                  "accountId": "string",
+                  "accountId": "{% response 'body', 'req_58ee0a7828cf4fbc8574fa0d44b83c87', 'b64::JC5hY2NvdW50SWQ=::46b', 'no-history', 60 %}",
                   "type": "deposit",
                   "amount": 100,
                   "currency": "PLN"
@@ -214,13 +226,13 @@ cookieJar:
   meta:
     id: jar_05edb6ff23fe28b58bca929c017b40ade6f1382a
     created: 1782821689356
-    modified: 1782829794940
+    modified: 1782830313623
 environments:
   name: Base Environment
   meta:
     id: env_05edb6ff23fe28b58bca929c017b40ade6f1382a
     created: 1782821689352
-    modified: 1782829794941
+    modified: 1782830313624
     isPrivate: false
   data:
     access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMjIyMjIyMi0yMjIyLTQyMjItODIyMi0yMjIyMjIyMjIyMDEiLCJ1c2VybmFtZSI6ImFubmEiLCJyb2xlIjoiYWRtaW4iLCJjdXN0b21lcklkIjoiMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTAxIiwiaWF0IjoxNzgyODI5Nzc2LCJleHAiOjE3ODI4MzMzNzZ9.YK2vSrhXfrmKYnEFMqFEOG5sX6PrhH7BWF6DzEeoc6o
