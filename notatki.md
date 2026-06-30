@@ -46,3 +46,5 @@ https://en.wikipedia.org/wiki/Regular_expression#Basic_concepts
 https://regex101.com/ 
 https://regexone.com/ 
 
+# Faker - Random Data GEenrator
+https://fakerjs.dev/api/person.html
