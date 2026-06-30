@@ -2,6 +2,14 @@ openapi: 3.1.0
 info:
   title: InsoBank Demo API
   version: 1.0.0
+  description: |
+    # Nowe API BANKU
+    > Mądry cytat
+    Lista:
+      * Ważne
+      * **bold**,
+  contact:
+    name: Banana
 components:
   schemas:
     Address:
@@ -305,6 +313,15 @@ components:
         - status
         - createdAt
       additionalProperties: false
+tags:
+  - name: customers
+  - name: accounts
+  - name: auth
+  - name: branches
+  - name: products
+  - name: transactions
+  - name: v1
+  - name: v2
 paths:
   /openapi.json:
     get:
@@ -873,6 +890,8 @@ paths:
           description: Default Response
   /customers/{id}/accounts/:
     get:
+      tags:
+        - accounts
       parameters:
         - schema:
             type: string
@@ -1081,6 +1100,8 @@ paths:
                 $ref: "#/components/schemas/Transaction"
   /transactions/{id}/:
     get:
+      tags:
+        - transactions
       parameters:
         - schema:
             type: string
