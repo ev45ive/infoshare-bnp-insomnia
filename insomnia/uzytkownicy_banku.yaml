@@ -42,7 +42,7 @@ collection:
     meta:
       id: fld_daf2c3753d1b42028cc81425a9d69402
       created: 1782829113145
-      modified: 1782830313627
+      modified: 1782831684845
       sortKey: -1782829113145
       description: ""
     children:
@@ -167,11 +167,49 @@ collection:
           - name: id
             value: "{% response 'body', 'req_e265f3fb1fb54486b1730cb01eda17a3',
               'b64::JC5kYXRhWzBdLmlk::46b', 'no-history', 60 %}"
+      - url: "{{ _.base_url }}/transactions/"
+        name: Przekroczono Balans konta
+        meta:
+          id: req_b5abd0b1a6e2459889838c2aa887da93
+          created: 1782831398554
+          modified: 1782831446106
+          isPrivate: false
+          description: ""
+          sortKey: -1782825528173.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "accountId": "{% response 'body', 'req_58ee0a7828cf4fbc8574fa0d44b83c87', 'b64::JC5hY2NvdW50SWQ=::46b', 'no-history', 60 %}",
+              "type": "withdrawal",
+              "amount": 9000,
+              "currency": "PLN"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            disabled: false
+        scripts:
+          afterResponse: |-
+            const {expect} = require('chai');
+
+            insomnia.test('Status 422',() => {
+            	expect( insomnia.response.code ).to.eq(422)
+            })
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
       - name: Operacje
         meta:
           id: fld_9cdcb2bae51d420db19ea3304a5a4e19
           created: 1782829154566
-          modified: 1782830294442
+          modified: 1782831684845
           sortKey: -1782829119720
           description: ""
         children:
@@ -180,7 +218,7 @@ collection:
             meta:
               id: req_f4940ffe085f4c789a6b729e6666716d
               created: 1782829071258
-              modified: 1782830283565
+              modified: 1782831129817
               isPrivate: false
               description: ""
               sortKey: -1782829161154
@@ -190,14 +228,21 @@ collection:
               text: >-
                 {
                   "accountId": "{% response 'body', 'req_58ee0a7828cf4fbc8574fa0d44b83c87', 'b64::JC5hY2NvdW50SWQ=::46b', 'no-history', 60 %}",
-                  "type": "deposit",
-                  "amount": 100,
+                  "type": "{{transferType}}",
+                  "amount": {{ amount }},
                   "currency": "PLN"
                 }
             headers:
               - name: Content-Type
                 value: application/json
                 disabled: false
+            scripts:
+              afterResponse: |-
+                const {expect} = require('chai');
+
+                insomnia.test('Status 201',() => {
+                	expect( insomnia.response.code ).to.eq(201)
+                })
             settings:
               renderRequestBody: true
               encodeUrl: true
@@ -206,6 +251,9 @@ collection:
                 send: true
                 store: true
               rebuildPath: true
+        environment:
+          transferType: deposit
+          amount: "100"
     scripts:
       preRequest: |-
         // const token = insomnia.environment.get('access_token');
@@ -226,13 +274,13 @@ cookieJar:
   meta:
     id: jar_05edb6ff23fe28b58bca929c017b40ade6f1382a
     created: 1782821689356
-    modified: 1782830313623
+    modified: 1782831684843
 environments:
   name: Base Environment
   meta:
     id: env_05edb6ff23fe28b58bca929c017b40ade6f1382a
     created: 1782821689352
-    modified: 1782830313624
+    modified: 1782831684843
     isPrivate: false
   data:
-    access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMjIyMjIyMi0yMjIyLTQyMjItODIyMi0yMjIyMjIyMjIyMDEiLCJ1c2VybmFtZSI6ImFubmEiLCJyb2xlIjoiYWRtaW4iLCJjdXN0b21lcklkIjoiMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTAxIiwiaWF0IjoxNzgyODI5Nzc2LCJleHAiOjE3ODI4MzMzNzZ9.YK2vSrhXfrmKYnEFMqFEOG5sX6PrhH7BWF6DzEeoc6o
+    access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMjIyMjIyMi0yMjIyLTQyMjItODIyMi0yMjIyMjIyMjIyMDEiLCJ1c2VybmFtZSI6ImFubmEiLCJyb2xlIjoiYWRtaW4iLCJjdXN0b21lcklkIjoiMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTAxIiwiaWF0IjoxNzgyODMxNjMwLCJleHAiOjE3ODI4MzUyMzB9.2931VebZvebhcnXHfSVrTJzSFD1kxNIDAjvFQzPS3aA
