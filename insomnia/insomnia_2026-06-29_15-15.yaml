@@ -1,10 +1,10 @@
 type: collection.insomnia.rest/5.0
 schema_version: "5.1"
-name: Customers
+name: _Szkicownik
 meta:
   id: wrk_bbd931d8b99f4ddb8c2d402b90312d05
   created: 1782734783274
-  modified: 1782734783274
+  modified: 1782821569872
   description: ""
 collection:
   - name: accounts
