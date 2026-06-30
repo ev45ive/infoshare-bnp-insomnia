@@ -1166,6 +1166,9 @@ spec:
             - status
             - createdAt
           additionalProperties: false
+    tags:
+      - name: customers
+      - name: accounts
     paths:
       /openapi.json:
         get:
@@ -1983,4 +1986,4 @@ spec:
   meta:
     id: spc_0c20d97050e5480da92a280ffc5f2a31
     created: 1782807850265
-    modified: 1782808897354
+    modified: 1782815419278
