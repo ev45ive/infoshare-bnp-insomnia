@@ -11,7 +11,7 @@ collection:
     meta:
       id: fld_039469bef4f34c3482a1b1c9ea48e52b
       created: 1782821832664
-      modified: 1782827727274
+      modified: 1782828655454
       sortKey: -1782821832664
       description: ""
     children:
@@ -199,7 +199,7 @@ collection:
         meta:
           id: req_b3d948debda343a4b9f976968f682b86
           created: 1782821927559
-          modified: 1782822546979
+          modified: 1782828757761
           isPrivate: false
           description: ""
           sortKey: -1782821936727
@@ -215,6 +215,28 @@ collection:
           - name: Content-Type
             value: application/json
             disabled: false
+        scripts:
+          afterResponse: |
+            const {expect} = require( 'chai' );
+            // https://www.chaijs.com/api/bdd/#method_include
+
+            insomnia.test('Login status is 200', () => { 
+            	expect(insomnia.response.status).to.eq('OK')
+            	expect(insomnia.response.code).to.be.eq(200)
+            	expect(insomnia.response.code).to.be.within(200,299)
+            })
+
+
+            insomnia.test('Response time under 1sec', () => { 
+            	expect(insomnia.response.responseTime).to.be.below(1000);
+            	
+            })
+
+            insomnia.test('Response is a token', () => { 
+            	const data = insomnia.response.json()
+            	expect(data).to.have.all.keys(
+            		'access_token','token_type')
+            })
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -253,20 +275,20 @@ cookieJar:
   meta:
     id: jar_5af274e0dbdbf21e636948b0d2ab07cbd72c7511
     created: 1782821651610
-    modified: 1782827727268
+    modified: 1782828655450
 environments:
   name: Base Environment
   meta:
     id: env_5af274e0dbdbf21e636948b0d2ab07cbd72c7511
     created: 1782821651608
-    modified: 1782827727270
+    modified: 1782828655452
     isPrivate: false
   subEnvironments:
     - name: administrator
       meta:
         id: env_0f816c1faede4b47a17624607ac7e46d
         created: 1782822401594
-        modified: 1782827727269
+        modified: 1782828655451
         isPrivate: false
         sortKey: 1782822401594
       data:
