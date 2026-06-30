@@ -48,3 +48,6 @@ https://regexone.com/
 
 # Faker - Random Data GEenrator
 https://fakerjs.dev/api/person.html
+
+# Chai assertions
+https://www.chaijs.com/api/bdd/#method_include 
