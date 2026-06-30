@@ -23,6 +23,13 @@ https://en.wikipedia.org/wiki/YAML
 # Open API Spec (OAS 3.2)
 https://spec.openapis.org/oas/latest.html#objects-and-fields
 
+# Spectral Style Guide Rulesets
+https://docs.stoplight.io/docs/spectral/e5b9616d6d50c-rulesets
+
+https://docs.stoplight.io/docs/spectral/9ffa04e052cc1-spectral-cli 
+
+npm install @stoplight/spectral-cli
+
 # JSON-Schema - Validate JSON
 https://json-schema.org/learn/getting-started-step-by-step
 
